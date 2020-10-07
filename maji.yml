@@ -1,25 +1,8 @@
 ---
-- name: Install nginx
-  hosts: host.name.ip
-  become: true
-
+- name: This is a hello-world example
+  hosts: ansibleclient01.local
   tasks:
-  - name: Add epel-release repo
-    yum:
-      name: epel-release
-      state: present
-
-  - name: Install nginx
-    yum:
-      name: nginx
-      state: present
-
-  - name: Insert Index Page
-    template:
-      src: index.html
-      dest: /usr/share/nginx/html/index.html
-
-  - name: Start NGiNX
-    service:
-      name: nginx
-      state: started
+    - name: Create a file called '/tmp/testfile.txt' with the content 'hello world'.
+      copy:
+        content: hello worldn
+        dest: /tmp/testfile.txt
